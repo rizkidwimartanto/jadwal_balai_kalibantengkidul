@@ -1,0 +1,64 @@
+:root {
+    --primary-color: #2c6e49;
+    --secondary-color: #a6cf98;
+    --accent-color: #f6f1f1;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+.navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+nav.navbar {
+    padding: 20px;
+}
+a.navbar-brand {
+    font-weight: 600;
+}
+a.nav-link {
+    font-size: 15px;
+}
+a.nav-link:hover {
+    color: black;
+}
+.card {
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-8px);
+}
+#about {
+    text-align: justify;
+    background: linear-gradient(135deg, #f0f8ff, #e6ffe6);
+    padding: 50px 0;
+}
+
+.btn i {
+    transition: transform 0.5s;
+}
+.btn:hover i {
+    transform: rotate(360deg);
+}
+#img-carousel {
+    height: 550px;
+    object-fit: cover;
+}
+div.row_about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.card {
+    cursor: pointer;
+}
+div.social_media a {
+    text-decoration: none;
+    color: black;
+}
