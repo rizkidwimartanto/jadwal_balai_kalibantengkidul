@@ -15,8 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="icon" href="{{ asset('img/theater.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="icon" href="{{ asset('img/town-hall.png') }}" type="image/png">
 
     <title>Balai Desa Kalibanteng Kidul</title>
 </head>
@@ -42,12 +42,7 @@
                         <a class="nav-link" href="#contact">Kontak Kami</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input id="searchInput" class="form-control me-2" type="search" placeholder="Cari"
-                        aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
+                <a class="btn btn-outline-success" href="{{ route('balai-kelurahan.login') }}">Login</a>
             </div>
         </div>
     </nav>
@@ -92,7 +87,8 @@
             <div class="container mt-5 mb-4">
                 <h2 class="text-center">Tentang Kami</h2>
                 <div class="row row_about justify-content-center">
-                    <div class="card card_about p-2 m-4 shadow-lg" data-aos="fade-up" data-aos-duration="1500" style="width: 20rem;">
+                    <div class="card card_about p-2 m-4 shadow-lg" data-aos="fade-up" data-aos-duration="1500"
+                        style="width: 20rem;">
                         <img src="{{ asset('img/info lengkap.jpg') }}" class="card-img-top" alt="Info Lengkap">
                         <div class="card-body">
                             <h5 class="card-title">Info Lengkap</h5>
@@ -103,7 +99,8 @@
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
-                    <div class="card card_about p-2 m-4 shadow-lg" data-aos="fade-up" data-aos-duration="1500" style="width: 20rem;">
+                    <div class="card card_about p-2 m-4 shadow-lg" data-aos="fade-up" data-aos-duration="1500"
+                        style="width: 20rem;">
                         <img src="{{ asset('img/sejarah.jpg') }}" class="card-img-top" alt="Sejarah">
                         <div class="card-body">
                             <h5 class="card-title">Sejarah</h5>
@@ -114,7 +111,8 @@
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
-                    <div class="card card_about p-2 m-4 shadow-lg" data-aos="fade-up" data-aos-duration="1500" style="width: 20rem;">
+                    <div class="card card_about p-2 m-4 shadow-lg" data-aos="fade-up" data-aos-duration="1500"
+                        style="width: 20rem;">
                         <img src="{{ asset('img/kegiatan.jpg') }}" class="card-img-top" alt="Kegiatan">
                         <div class="card-body">
                             <h5 class="card-title">Kegiatan</h5>

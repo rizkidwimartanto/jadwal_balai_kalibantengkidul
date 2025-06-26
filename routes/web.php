@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BalaiKelurahanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::controller('BalaiKelurahanController')->group(function(){
-    Route::get('/balai-kelurahan', 'login')->name('balai-kelurahan.login');
+Route::controller(BalaiKelurahanController::class)->group(function(){
+    Route::get('/', 'index')->name('balai-kelurahan.index');
+    Route::get('/balai-kelurahan/login', 'login')->name('balai-kelurahan.login');
+    Route::get('/balai-kelurahan/register', 'register')->name('balai-kelurahan.register');
     Route::get('/balai-kelurahan/create', 'create')->name('balai-kelurahan.create');
     Route::post('/balai-kelurahan/store', 'store')->name('balai-kelurahan.store');
     Route::get('/balai-kelurahan/{id}/edit', 'edit')->name('balai-kelurahan.edit');
