@@ -32,7 +32,8 @@
 <body class="d-flex align-items-center justify-content-center min-vh-100">
     <div class="container">
         <div class="shadow-lg p-4 bg-white rounded m-4">
-            <form action="">
+            <form action="{{route('balai-kelurahan.store')}}" method="POST">
+                @csrf
                 <h3 class="text-center mb-4">Registrasi Akun</h3>
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
@@ -54,13 +55,6 @@
                     <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                     <input type="password" class="form-control" id="password" name="password" required>
                     <input type="checkbox" name="check_password" id="check_password" class="form-check-input mt-2">
-                    <span class="show_password">Show Password</span>
-                </div>
-                <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">Konfirmasi Password <span
-                            class="text-danger">*</span></label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password" required>
-                    <input type="checkbox" name="check_password_confirmation" id="check_password_confirmation" class="form-check-input mt-2">
                     <span class="show_password">Show Password</span>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Submit</button>
