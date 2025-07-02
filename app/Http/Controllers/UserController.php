@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -7,25 +7,31 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-      public function store(Request $request)
-      {
-          // Validate the request data
-          $request->validate([
-              'name' => 'required|string|max:255',
-              'email' => 'required|string|email|max:255|unique:users',
-              'password' => 'required|string|min:8|confirmed',
-          ]);
+    public function store(Request $request)
+    {
+        $validate = $request->validate([
+            'name' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+            'no_handphone' => 'required|digits_between:10,15',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:4',
+            'password_confirmation' => 'required|string|same:password|min:4',
+        ]);
 
-          // Create a new user instance
-          $user = new \App\Models\User();
-          $user->name = $request->name;
-          $user->alamat = $request->alamat;
-          $user->no_handphone = $request->no_handphone;
-          $user->email = $request->email;
-          $user->password = bcrypt($request->password);
-          $user->save();
 
-          // Redirect or return a response
-          return redirect()->route('balai-kelurahan.login')->with('success', 'User registered successfully!');
-      }
+        if ($validate) {
+            \App\Models\User::create([
+                'name' => $request->name,
+                'alamat' => $request->alamat,
+                'no_handphone' => $request->no_handphone,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => 'user',
+            ]);
+
+            return redirect()->route('balai-kelurahan.login')->with('success', 'User registered successfully!');
+        } else {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+    }
 }

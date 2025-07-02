@@ -17,4 +17,5 @@ class BalaiKelurahanController extends Controller
     public function register(){
         return view('admin.auth.register');
     }
+    
 }
