@@ -4,23 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name' => 'required|string|max:255',
-            'alamat' => 'required|string|max:255',
+            'name' => 'required',
+            'alamat' => 'required',
             'no_handphone' => 'required|digits_between:10,15',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4',
-            'password_confirmation' => 'required|string|same:password|min:4',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4',
+            'password_confirmation' => 'required|same:password',
+        ], [
+            'required' => ':attribute wajib diisi.',
+            'email' => 'Format email tidak valid.',
+            'unique' => 'Email sudah terdaftar.',
+            'digits_between' => 'Nomor handphone harus antara 10 hingga 15 digit',
+            'same' => 'Konfirmasi password tidak sesuai.',
+            'min' => 'Password minimal 4 karakter.',
         ]);
 
 
         if ($validate) {
-            \App\Models\User::create([
+            $user = User::create([
                 'name' => $request->name,
                 'alamat' => $request->alamat,
                 'no_handphone' => $request->no_handphone,
@@ -29,7 +39,13 @@ class UserController extends Controller
                 'role' => 'user',
             ]);
 
-            return redirect()->route('balai-kelurahan.login')->with('success', 'User registered successfully!');
+            event(new Registered($user));
+
+            // Login user agar bisa akses halaman /email/verify
+            Auth::login($user);
+
+            // Redirect ke halaman notifikasi verifikasi
+            return redirect()->route('verification.notice');
         } else {
             return redirect()->back()->withErrors($validate)->withInput();
         }

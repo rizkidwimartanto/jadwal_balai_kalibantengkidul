@@ -31,36 +31,39 @@
 
 <body class="d-flex align-items-center justify-content-center min-vh-100">
     <div class="container">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul class="mb-0">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
         <div class="shadow-lg p-4 bg-white rounded m-4">
             <form action="{{ route('balai-kelurahan.store') }}" method="POST">
                 @csrf
                 <h3 class="text-center mb-4">Registrasi Akun</h3>
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="alamat" name="alamat" value="{{ old('alamat') }}" required>
+                    <input type="text" class="form-control" id="alamat" name="alamat" value="{{ old('alamat') }}"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="no_handphone" class="form-label">No Handphone <span class="text-danger">*</span></label>
                     <input type="text" inputmode="numeric" class="form-control" id="no_handphone" name="no_handphone"
-                        value="{{ old('no_handphone') }}" required pattern="[0-9]{10,15}" title="Masukkan nomor handphone yang valid (10-15 digit)">
+                        value="{{ old('no_handphone') }}" required pattern="[0-9]{10,15}"
+                        title="Masukkan nomor handphone yang valid (10-15 digit)">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
@@ -71,7 +74,8 @@
                 <div class="mb-3">
                     <label for="password_confirmation" class="form-label">Konfirmasi Password <span
                             class="text-danger">*</span></label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
+                        required>
                     <input type="checkbox" name="check_password_confirmation" id="check_password_confirmation"
                         class="form-check-input mt-2">
                     <span class="show_password">Show Password</span>
