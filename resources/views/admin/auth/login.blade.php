@@ -14,6 +14,7 @@
             font-family: "Open Sans", sans-serif;
             background: linear-gradient(135deg, #f0f8ff, #bff0bf);
         }
+
         .btn-light {
             border: 1px solid black
         }
@@ -28,22 +29,32 @@
                 <img src="{{ asset('img/keyboard.jpg') }}" width="100%" height="100%" alt="Keyboard">
             </div>
             <div class="col-md-6">
-                <form action="">
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form action="{{ route('balai-kelurahan.proses_login') }}" method="POST">
+                    @csrf
                     <h3 class="text-center mb-4">Login</h3>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
                     <div class="mb-3">
-                        <a href="#">Lupa password?</a>
+                        <a href="{{route('password.request')}}">Lupa password?</a>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                     <div class="mb-2 mt-2">
-                        <p>Belum punya akun? <a href="{{route('balai-kelurahan.register')}}"> Daftar disini</a></p>
+                        <p>Belum punya akun? <a href="{{ route('balai-kelurahan.register') }}"> Daftar disini</a></p>
                     </div>
                     <button type="button" class="btn btn-light w-100"><img src="{{ asset('img/google.png') }}"
                             width="5%" alt=""> Masuk dengan Google</button>

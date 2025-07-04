@@ -36,7 +36,7 @@
                 @csrf
                 <h3 class="text-center mb-4">Registrasi Akun</h3>
                 @if ($errors->any())
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div class="alert alert-danger" role="alert">
                         <ul class="mb-0">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>

@@ -11,11 +11,7 @@ class BalaiKelurahanController extends Controller
     public function index(){
         return view('home');
     }
-    public function login(){
-        return view('admin.auth.login');
+    public function dashboard(){
+        return view('admin.dashboard.index');
     }
-    public function register(){
-        return view('admin.auth.register');
-    }
-    
 }
