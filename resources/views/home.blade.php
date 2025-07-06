@@ -165,8 +165,8 @@
                         <label for="message" class="form-label">Pesan</label>
                         <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                     </div>
-                    <div class="row">
-                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary w-100">Kirim Pesan</button>
                     </div>
                 </form>
             </div>

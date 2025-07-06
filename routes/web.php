@@ -10,6 +10,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\SocialiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,3 +107,6 @@ Route::post('/reset-password', function (Request $request) {
         ? redirect()->route('balai-kelurahan.login')->with('status', __($status))
         : back()->withErrors(['email' => [__($status)]]);
 })->middleware('guest')->name('password.update');
+
+Route::get('/balai-kelurahan/login/auth/google', [SocialiteController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/balai-kelurahan/login/auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
