@@ -20,37 +20,58 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="icon" href="{{ asset('img/town-hall.png') }}" type="image/png">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <style>
+        /* Sembunyikan sidebar di layar kecil */
+        @media (max-width: 600px) {
+            #sidebar {
+                display: none;
+                position: absolute;
+                z-index: 1000;
+                background-color: #dc3545;
+                color: white;
+                width: 200px;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                padding: 20px;
+            }
+
+            #toggleSidebarBtn {
+                display: block;
+            }
+        }
+
+        /* Default: tampilkan sidebar di layar besar */
+        #toggleSidebarBtn {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Balai Desa Kalibanteng Kidul</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">Tentang Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#schedule">Jadwal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Kontak Kami</a>
-                    </li>
-                </ul>
-                <form action="{{route('balai-kelurahan.logout')}}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-outline-danger">Logout</button>
-                </form>
-            </div>
+    <!-- Tombol Toggle -->
+    <button class="btn btn-danger m-2" id="toggleSidebarBtn"><i class="fa-solid fa-bars"></i> Menu</button>
+    <div class="d-flex">
+        <div class="bg-danger text-white p-3" id="sidebar" style="width: 200px; min-height: 100vh;">
+            <h5>Balai Kelurahan Kalibanteng Kidul</h5>
+            <a href="#" class="d-block text-white pt-4 text-decoration-none">Home</a>
+            <a href="#" class="d-block text-white pt-4 text-decoration-none">Profil</a>
+            <a href="#" class="d-block text-white pt-4 text-decoration-none">Layanan</a>
+            <a href="#" class="d-block text-white pt-4 text-decoration-none">Kontak</a>
         </div>
-    </nav>
+        <div class="flex-grow-1 p-4">
+            <p>Konten utama di sini...</p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#toggleSidebarBtn').click(function() {
+                $('#sidebar').toggle();
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
     </script>

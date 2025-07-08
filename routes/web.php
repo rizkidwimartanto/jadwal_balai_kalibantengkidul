@@ -110,3 +110,5 @@ Route::post('/reset-password', function (Request $request) {
 
 Route::get('/balai-kelurahan/login/auth/google', [SocialiteController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/balai-kelurahan/login/auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
+Route::get('/auth/facebook', [SocialiteController::class, 'redirectToFacebook'])->name('facebook.login');
+Route::get('/auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback']);

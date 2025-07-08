@@ -8,28 +8,24 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialiteController extends Controller
 {
-    public function redirectToGoogle()
+    public function redirectToFacebook()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
-    public function handleGoogleCallback()
+    public function handleFacebookCallback()
     {
-        $googleUser = Socialite::driver('google')->stateless()->user();
+        $facebookUser = Socialite::driver('facebook')->user();
 
-        // Cari user berdasarkan email
-        $user = User::where('email', $googleUser->getEmail())->first();
-
-        if (!$user) {
-            // Jika belum terdaftar, buat user baru
-            $user = User::create([
-                'name' => $googleUser->getName(),
-                'email' => $googleUser->getEmail(),
-                'password' => bcrypt(uniqid()), // password acak
+        $user = User::firstOrCreate(
+            ['email' => $facebookUser->getEmail()],
+            [
+                'name' => $facebookUser->getName(),
+                'password' => bcrypt(uniqid()),
                 'email_verified_at' => now(),
                 'role' => 'user',
-            ]);
-        }
+            ]
+        );
 
         Auth::login($user);
         return redirect()->route('balai-kelurahan.dashboard');

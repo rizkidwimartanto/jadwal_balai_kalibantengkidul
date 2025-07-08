@@ -60,7 +60,7 @@ class UserController extends Controller
             'email' => 'Format email tidak valid.',
             'unique' => 'Email sudah terdaftar.',
             'digits_between' => 'Nomor handphone harus antara 10 hingga 15 digit',
-            'same' => 'Konfirmasi password tidak sesuai.',
+            'same' => 'Konfirmasi password tidak sama dengan password.',
             'min' => 'Password minimal 4 karakter.',
         ]);
 
