@@ -20,9 +20,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="icon" href="{{ asset('img/town-hall.png') }}" type="image/png">
-    <title>Dashboard</title>
+    <title>{{$title}}</title>
     <style>
-        /* Sembunyikan sidebar di layar kecil */
         @media (max-width: 600px) {
             #sidebar {
                 display: none;
@@ -62,9 +61,10 @@
                 <img src="{{ asset('img/user.png') }}" class="rounded-circle me-2" data-bs-toggle="dropdown"
                     aria-expanded="false" id="profile" alt="profile" width="45" height="45">
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item active p-2">{{(auth()->user()->name)}} <br> {{auth()->user()->email}}</a></li>
+                    <li><a class="dropdown-item active p-2">{{ auth()->user()->name }} <br>
+                            {{ auth()->user()->email }}</a></li>
                     <li><a class="dropdown-item p-2" href="#">Edit</a></li>
-                    <li><a class="dropdown-item p-2" href="{{route('balai-kelurahan.logout')}}">Logout</a></li>
+                    <li><a class="dropdown-item p-2" href="{{ route('balai-kelurahan.logout') }}">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -76,39 +76,7 @@
             <a href="#" class="d-block text-dark pt-4 text-decoration-none">Layanan</a>
             <a href="#" class="d-block text-dark pt-4 text-decoration-none">Kontak</a>
         </div>
-        <div class="flex-grow-1 p-4">
-            <h3 class="mb-3">Dashboard</h3>
-            <div class="alert alert-danger" role="alert">
-                Selamat datang di dashboard Balai Kelurahan Kalibanteng Kidul! Di sini Anda dapat mengelola kegiatan
-                dan informasi terkait balai kelurahan.
-            </div>
-            <a href="{{ route('balai-kelurahan.create') }}" class="btn btn-primary mb-3">Tambah Kegiatan</a>
-            <table class="table table-bordered table-hover">
-                <thead class="table-danger">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Kegiatan</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Waktu</th>
-                        <th scope="col">Nama Penanggung Jawab</th>
-                        <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Badminton</td>
-                        <td>2023-10-01</td>
-                        <td>10:00 - 12:00</td>
-                        <td>Eko Winarno</td>
-                        <td>
-                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        @yield('content')
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>

@@ -25,8 +25,9 @@ use App\Http\Controllers\SocialiteController;
 
 Route::controller(BalaiKelurahanController::class)->group(function () {
     Route::get('/', 'index')->name('balai-kelurahan.index');
-    Route::get('/balai-kelurahan/dashboard', 'dashboard')->name('balai-kelurahan.dashboard')->middleware('auth');
-    Route::get('/balai-kelurahan/create', 'create')->name('balai-kelurahan.create');
+    Route::get('/balai-kelurahan/user_dashboard', 'user_dashboard')->name('balai-kelurahan.user_dashboard')->middleware('auth');
+    Route::get('/balai-kelurahan/create_activity_user', 'create_activity_user')->name('balai-kelurahan.create_activity_user');
+    Route::post('/balai-kelurahan/process_create_activity_user', 'process_create_activity_user')->name('balai-kelurahan.process_create_activity_user');
     Route::get('/balai-kelurahan/{id}/edit', 'edit')->name('balai-kelurahan.edit');
     Route::put('/balai-kelurahan/{id}', 'update')->name('balai-kelurahan.update');
     Route::delete('/balai-kelurahan/{id}', 'destroy')->name('balai-kelurahan.destroy');
@@ -36,7 +37,7 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/balai-kelurahan/register', 'register')->name('balai-kelurahan.register');
     Route::post('/balai-kelurahan/proses_login', 'proses_login')->name('balai-kelurahan.proses_login');
     Route::post('/balai-kelurahan/store', 'store')->name('balai-kelurahan.store');
-    Route::post('/balai-kelurahan/logout', 'logout')->name('balai-kelurahan.logout');
+    Route::get('/balai-kelurahan/logout', 'logout')->name('balai-kelurahan.logout');
 });
 // Tampilkan halaman "verifikasi email dikirim"
 Route::get('/email/verify', function () {

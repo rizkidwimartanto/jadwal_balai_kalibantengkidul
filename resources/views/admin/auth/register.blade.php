@@ -61,7 +61,7 @@
                         title="Masukkan nomor handphone yang valid (10-15 digit)">
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}"
                         required>
                 </div>

@@ -129,6 +129,7 @@
         <div id="schedule">
             <div class="container mt-4 mb-4">
                 <h2 class="text-center">Jadwal Kegiatan</h2>
+                <a href="{{route('balai-kelurahan.login')}}" class="btn btn-success w-100 mb-3">Booking Jadwal Sekarang</a>
                 <table class="table table-striped table-bordered" data-aos="fade-right" data-aos-duration="2000">
                     <thead class="table-dark text-center">
                         <tr>

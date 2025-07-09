@@ -42,7 +42,7 @@ class UserController extends Controller
         }
 
         Auth::login($user);
-        return redirect()->route('balai-kelurahan.dashboard');
+        return redirect()->route('balai-kelurahan.user_dashboard');
     }
 
 

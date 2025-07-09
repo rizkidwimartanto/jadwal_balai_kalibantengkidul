@@ -57,6 +57,9 @@
                     <div class="mb-2 mt-2">
                         <p>Belum punya akun? <a href="{{ route('balai-kelurahan.register') }}"> Daftar disini</a></p>
                     </div>
+                    <div class="mb-2 mt-2">
+                        <p>Kembali ke menu utama <a href="{{ route('balai-kelurahan.index') }}"> Halaman Utama</a></p>
+                    </div>
                     <a href="{{ route('google.login') }}" class="btn btn-light w-100">
                         <img src="{{ asset('img/google.png') }}" width="5%" alt=""> Masuk dengan Google
                     </a>
