@@ -11,23 +11,30 @@ use PDO;
 
 class BalaiKelurahanController extends Controller
 {
-    public function index(){
-        return view('home');
+    public function index()
+    {
+        $data = [
+            'data_kegiatan' => BalaiKelurahanModel::all(),
+        ];
+        return view('home', $data);
     }
-    public function user_dashboard(){
+    public function user_dashboard()
+    {
         $data = [
             'title' => 'User Dashboard',
-            'data_kegiatan' => BalaiKelurahanModel::all(), 
+            'data_kegiatan' => BalaiKelurahanModel::all(),
         ];
         return view('user.dashboard', $data);
     }
-    public function create_activity_user(){
+    public function create_activity_user()
+    {
         $data = [
             'title' => 'Tambah Kegiatan',
         ];
         return view('user.create_activity', $data);
     }
-    public function process_create_activity_user(Request $request){
+    public function process_create_activity_user(Request $request)
+    {
         // Validasi input
         $request->validate([
             'nama_kegiatan' => 'required|string',
@@ -44,6 +51,6 @@ class BalaiKelurahanController extends Controller
         $activity->penanggung_jawab = $request->penanggung_jawab;
         $activity->save();
 
-        return redirect()->route('balai-kelurahan.user_dashboard')->with('success', 'Kegiatan berhasil ditambahkan!');      
+        return redirect()->route('balai-kelurahan.user_dashboard')->with('success', 'Kegiatan berhasil ditambahkan!');
     }
 }

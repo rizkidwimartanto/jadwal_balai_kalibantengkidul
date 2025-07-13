@@ -129,22 +129,30 @@
         <div id="schedule">
             <div class="container mt-4 mb-4">
                 <h2 class="text-center">Jadwal Kegiatan</h2>
-                <a href="{{route('balai-kelurahan.login')}}" class="btn btn-success w-100 mb-3">Booking Jadwal Sekarang</a>
+                <a href="{{ route('balai-kelurahan.login') }}" class="btn btn-success w-100 mb-3">Booking Jadwal
+                    Sekarang</a>
                 <table class="table table-striped table-bordered" data-aos="fade-right" data-aos-duration="2000">
                     <thead class="table-dark text-center">
                         <tr>
                             <th>No</th>
                             <th>Nama Kegiatan</th>
-                            <th>Waktu</th>
+                            <th>Tanggal Kegiatan</th>
+                            <th>Waktu Kegiatan</th>
+                            <th>Penanggung Jawab</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Rapat Bulanan</td>
-                            <td>Setiap Senin, Pukul 10:00</td>
-                        </tr>
-                        <!-- dst -->
+                        @foreach ($data_kegiatan as $kegiatan)
+                            <?php $no = 1; ?>
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $kegiatan->nama_kegiatan }}</td>
+                                <td>{{ \Carbon\Carbon::parse($kegiatan->tanggal_kegiatan)->translatedFormat('d F Y') }}
+                                </td>
+                                <td>{{ $kegiatan->waktu_kegiatan }}</td>
+                                <td>{{ $kegiatan->penanggung_jawab }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
